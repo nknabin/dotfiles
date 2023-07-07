@@ -14,11 +14,13 @@ sudo pacman -S --noconfirm --needed \
      xorg-server \
      xorg-xinit \
      swaylock swaybg swayidle swayimg \
-     pipewire pipewire-docs wireplumber pipewire-alsa pipewire-pulse pipewire-audio pavucontrol \
+     xorg-xwayland \
+     linux-firmware alsa-firmware sof-firmware \
+     alsa-utils pipewire pipewire-docs wireplumber pipewire-alsa pipewire-pulse pipewire-audio pavucontrol \
      xf86-video-intel ffmpeg vlc mpv \
      bluez bluez-utils blueman \
      noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-iosevka-nerd otf-font-awesome \
-     nemo nemo-fileroller \
+     nemo nemo-fileroller ranger \
      libreoffice-still \
      xss-lock i3lock \
      kitty terminator \
@@ -39,7 +41,8 @@ sudo pacman -S --noconfirm --needed \
      ydotool \
      gnome-themes-extra adwaita-qt5 adwaita-qt6 \
      imv \
-     jq
+     jq \
+     brightnessctl
 
 yay -S --noconfirm --needed \
     xinit-xsession \
@@ -47,7 +50,7 @@ yay -S --noconfirm --needed \
 
 # set up spacemacs
 sudo pacman -S --noconfirm --needed emacs
-if [[ ! -d ~/.emacs.d ]]; then 
+if [[ ! -d ~/.emacs.d ]]; then
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 else
     echo "~/.emacs.d already exists!"

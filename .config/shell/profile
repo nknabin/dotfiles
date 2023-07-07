@@ -12,12 +12,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-# dark mode; does not enable live switching
-# https://wiki.archlinux.org/title/Dark_mode_switching
-export GTK_THEME=Adwaita:dark
-export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-export QT_STYLE_OVERRIDE=adwaita-dark
-
 # start x server, runs ~/.initrc
 #if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 #	startx

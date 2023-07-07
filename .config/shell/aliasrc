@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Use neovim for vim if present
+command -v nvim > /dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# directories
+alias \
+    de="cd ~/Desktop" \
+    doc="cd ~/Documents" \
+    D="cd ~/Downloads"
+
+# general and verbose
+alias \
+    cp="cp -iv" \
+    mv="mv -iv" \
+    rm="rm -i" \
+    mkdir="mkdir -pv"
+
+# colorize commands when possible
+alias \
+    l="ls -hN --color=auto --group-directories-first" \
+    ls="ls -hN --color=auto --group-directories-first" \
+    la="ls -a" \
+    ll="ls -l" \
+    lal="ls -al" \
+    grep="grep --color=auto" \
+    diff="diff --color=auto" 
+
+# utils
+alias \
+    xclip="xclip -selection clipboard"
+
+# shorthand
+alias \
+    g="git" \
+    p="sudo pacman" \
+    v="$EDITOR" \
+    powerup="sudo pacman -Syuu --noconfirm && yay -Syuu --noconfirm"
+

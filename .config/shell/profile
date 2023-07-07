@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# profile file
+# environment variables are set here
+# set environment variables
+export TERMINAL="terminator"
+export EDITOR="nvim"
+export BROWSER="librewolf"
+
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+# dark mode; does not enable live switching
+# https://wiki.archlinux.org/title/Dark_mode_switching
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=adwaita-dark
+
+# start x server, runs ~/.initrc
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#	startx
+#fi
+
+if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    export SDL_VIDEODRIVER=wayland
+
+    # fix java applications rendering issue in dwm and sway
+    # https://github.com/swaywm/sway/issues/595
+    export _JAVA_AWT_WM_NONREPARENTING=1
+
+    export QT_QPA_PLATFORM=wayland
+    export XDG_CURRENT_DESKTOP=sway
+    export XDG_SESSION_DESKTOP=sway
+
+    exec sway
+fi

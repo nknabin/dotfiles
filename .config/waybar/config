@@ -1,0 +1,160 @@
+// Waybar configuration
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+
+{
+    // Global Configuration
+
+    "layer": "bottom",
+    "position": "bottom",
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 30,
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/window",
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "tray","custom/separator",
+        "network","custom/separator",
+        "memory","custom/separator",
+        "cpu","custom/separator",
+        //"custom/keyboard-layout","custom/separator",
+        //"wireplumber","custom/separator",
+        "pulseaudio#sink","custom/separator",
+        "pulseaudio#source","custom/separator",
+        "backlight","custom/separator",
+        "battery","custom/separator",
+        "clock#date","custom/separator",
+        "clock#time",
+    ],
+
+    // Modules
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""],
+        "scroll-step": 1,
+    },
+ 
+     "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "Bat: +{capacity}%",
+        "format-discharging": "Bat: -{capacity}%",
+        "tooltip": true,
+    },
+    
+    "clock#date": {
+        "interval": 1,
+        "format": "{:%a%e %b %Y}",
+        "tooltip-format": "{:%a%e %B %Y}",
+    },
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip": false,
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "CPU: {usage}% ({load})",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
+        "on-click": "$TERMINAL -e top",
+    },
+ 
+    "custom/keyboard-layout": {
+        "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+        // Interval set only as a fallback, as the value is updated by signal
+        "interval": 30,
+        "format": "  {}", // Icon: keyboard
+                           // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+        "signal": 1, // SIGHUP
+        "tooltip": false,
+    },
+
+    "custom/separator": {
+        "interval": "once",
+        "format": "|",
+        "tooltip": false,
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "RAM: {}%",
+        "states": {
+            "warning": 70,
+            "critical": 80,
+        },
+        "on-click": "$TERMINAL -e top",
+    },
+
+    "network": {
+        "interval": 5,
+        "format": "{ifname}",
+        "format-wifi": "W: {essid} ({signalStrength}%)",
+        "format-ethernet": "E: {ipaddr}/{cidr}",
+        "format-disconnected": "W/E: Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "$TERMINAL -e nmtui",
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
+        "tooltip": false,
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 120,
+    },
+
+    "sway/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": false,
+        "format": "{name}",
+    },
+  
+    "tray": {
+        "icon-size": 14,
+        "show-passive-items": true,
+        "spacing": 10,
+    },
+
+   "pulseaudio#sink": {
+        "format": "{icon}: {volume}",
+        "format-muted": "Vol: (muted) {volume}",
+        "format-bluetooth": "Vol BT: {volume}",
+        "on-click": "amixer set Master toggle",
+        "on-click-right": "pavucontrol",
+        //"on-click-right": "$TERMINAL -e \"alsamixer -V all\"",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+        "format-icons": {
+            "headphone": "Vol HP",
+            "speaker": "Vol",
+            "deafult": "Vol",
+        },
+    },
+
+    "pulseaudio#source": {
+        "format": "Mic: {format_source}",
+        "format-source": "{volume}",
+        "format-source-muted":  "(muted) {volume}",
+        "on-click": "amixer set Capture toggle",
+        "on-click-right": "pavucontrol",
+        //"on-click-right": "$TERMINAL -e \"alsamixer -V all\"",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+    },
+}

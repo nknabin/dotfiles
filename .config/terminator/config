@@ -1,0 +1,31 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+  cycle_next = <Primary>Page_Up
+  cycle_prev = <Primary>Page_Down
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  line_up = <Primary><Shift>k
+  line_down = <Primary><Shift>j
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+  layout_launcher = <Shift><Alt>l
+  preferences_keybindings = <Primary><Shift><Alt>k
+[profiles]
+  [[default]]
+    background_color = "#282828"
+    font = Iosevka Nerd Font 14
+    foreground_color = "#ebdbb2"
+    scrollbar_position = hidden
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

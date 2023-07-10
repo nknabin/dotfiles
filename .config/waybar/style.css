@@ -26,7 +26,8 @@
 #backlight,
 #battery,
 #clock,
-#tray {
+#tray,
+#custom-notification {
     padding: 0 5px;
 }
 
@@ -36,6 +37,10 @@
 
 #battery.critical {
     color: red;
+}
+
+#custom-notification {
+    font-family: "NotoSansMono Nerd Font";
 }
 
 #cpu.warning {
@@ -101,3 +106,4 @@
 #wireplumber.muted {
     color: orange;
 }
+

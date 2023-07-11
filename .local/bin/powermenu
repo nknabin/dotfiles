@@ -1,0 +1,50 @@
+#!/bin/bash
+
+menu_runner="$1"
+
+menu="Hibernate\nLock\nLog off\nPoweroff\nSleep"
+case $menu_runner in
+    "dmenu")
+        user_input=$(echo -e "$menu" | dmenu -i) #-fn "Iosevka Nerd Font-20")
+        ;;
+
+    "rofi")
+        user_input=$(echo -e "$menu" | rofi -mode drun -dmenu -i) #-font "Iosevka Nerd Font 20")
+        ;;
+
+    "wmenu")
+        user_input=$(echo -e "$menu" | wmenu -i) # -f "Iosevka Nerd Font 20")
+        ;;
+
+    *)
+        user_input=$(echo -e "$menu" | wofi -d -i -O alphabetical)
+        ;;
+esac
+
+case $user_input in
+    "Hibernate")
+        systemctl hibernate
+        ;;
+
+    "Lock")
+        swaylock --daemonize -c 000000
+        #i3lock -c 000000
+        ;;
+
+    "Log off")
+        swaymsg exit
+        #i3-msg exit
+        ;;
+
+    "Power off")
+        poweroff
+        ;;
+
+    "Sleep")
+        systemctl suspend
+        ;;
+
+    *)
+        ;;
+esac
+

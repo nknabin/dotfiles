@@ -2,6 +2,9 @@
 
 # profile file
 # environment variables are set here
+
+[[ $HOME/.bashrc ]] && . $HOME/.bashrc
+
 # set environment variables
 export TERMINAL="terminator"
 export EDITOR="nvim"
@@ -12,11 +15,14 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
+[[ -d $HOME/bin ]] && export PATH=$HOME/bin:$PATH
+[[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
+
 # start x server, runs ~/.initrc
 #if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 #	startx
 #fi
-
+  
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     export SDL_VIDEODRIVER=wayland
 

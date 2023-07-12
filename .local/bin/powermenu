@@ -2,7 +2,7 @@
 
 menu_runner="$1"
 
-menu="Hibernate\nLock\nLog off\nPoweroff\nSleep"
+menu="Hibernate\nLock\nLog off\nPower off\nRestart\nSleep"
 case $menu_runner in
     "dmenu")
         user_input=$(echo -e "$menu" | dmenu -i) #-fn "Iosevka Nerd Font-20")
@@ -37,7 +37,11 @@ case $user_input in
         ;;
 
     "Power off")
-        poweroff
+        shutdown -P now
+        ;;
+
+    "Restart")
+        shutdown -r now
         ;;
 
     "Sleep")

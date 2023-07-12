@@ -46,6 +46,7 @@ sudo pacman -S --noconfirm --needed \
 
 yay -S --noconfirm --needed \
     xinit-xsession \
+    wdisplays wlr-randr \
     google-chrome
 
 # set up spacemacs

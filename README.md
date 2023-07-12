@@ -26,12 +26,12 @@ Switch between the following window managers in .config/shell/profile.
 
 ## Custom scripts
 - Powermenu (~/.local/bin/powermenu)
-  Custom powermenu that provides power options using wofi by default. Other options are to use dmenu, rofi, or wmenu. Bind it to your keybinding in your respective window manager's config file. By default, it is bound to Mod+Shift+d.
+Custom powermenu that provides power options using wofi by default. Other options are to use dmenu, rofi, or wmenu. Bind it to your keybinding in your respective window manager's config file. By default, it is bound to Mod+Shift+d.
 
-  ```bash
-  bindsym $mod+Shift+d exec powermenu
-  #bindsym $mod+Shift+d exec powermenu rofi # uses rofi
-  ```
+```bash
+bindsym $mod+Shift+d exec powermenu
+#bindsym $mod+Shift+d exec powermenu rofi # uses rofi
+```
 
 ## Usage
 1. Clone the repo.

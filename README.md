@@ -25,7 +25,7 @@ Switch between the following window managers in .config/shell/profile.
 - tmux
 
 ## Custom scripts
-- Powermenu (~/.local/bin/powermenu)
+- Powermenu (~/.local/bin/powermenu)\
 Custom powermenu that provides power options using wofi by default.\
 Other menu options are dmenu, rofi, and wmenu. Bind it to your keybinding in your respective window manager's config file (set to mod+Shift+d by default).
 

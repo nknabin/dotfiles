@@ -136,16 +136,27 @@ input type:touchpad {
     # screenshot focused window 
     bindsym Ctrl+Shift+Print exec swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"' | grim -g -
 
-    # Use wpctl to adjust volume in WirePlumber.
-    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+ 
-    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
-    bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+    ## Use wpctl to adjust volume in WirePlumber.
+    #bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+
+    #bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
+    #bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
 
-    # When used with Alt, modify source 
-    bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
-    bindsym Mod1+XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 10%-
-    bindsym Mod1+XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 10%+ 
-    bindsym Mod1+XF86AudioMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
+    ## When used with Alt, modify source
+    #bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
+    #bindsym Mod1+XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 10%-
+    #bindsym Mod1+XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 10%+
+    #bindsym Mod1+XF86AudioMute exec wpctl set-mute @DEFAULT_SOURCE@ toggle
+
+    # Use pactl
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+    # When used with ALt, modify source
+    bindsym Mod1+XF86AudioRaiseVolume exec pactl set-source-volume @DEFAULT_SOURCE@ +10%
+    bindsym Mod1+XF86AudioLowerVolume exec pactl set-source-volume @DEFAULT_SOURCE@ -10%
+    bindsym Mod1+XF86AudioMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 #
 # Workspaces:
 #

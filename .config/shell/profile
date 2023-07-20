@@ -22,7 +22,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 #if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 #	startx
 #fi
-  
+
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     export SDL_VIDEODRIVER=wayland
 

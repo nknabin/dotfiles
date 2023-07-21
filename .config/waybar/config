@@ -54,8 +54,9 @@
     
     "clock#date": {
         "interval": 1,
-        "format": "{:%a%e %b %Y}",
-        "tooltip-format": "{:%a%e %B %Y}",
+        "format": "{:%a %e %b %Y}",
+        "tooltip-format": "{:%a %e %B %Y}",
+        "on-click": "coretime",
     },
 
     "clock#time": {
@@ -156,11 +157,14 @@
         "format": "{icon}: {volume}",
         "format-muted": "Vol: (muted) {volume}",
         "format-bluetooth": "Vol BT: {volume}",
-        "on-click": "amixer set Master toggle",
+        //"on-click": "amixer set Master toggle",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
         //"on-click-right": "$TERMINAL -e \"alsamixer -V all\"",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+        //"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+        //"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
         "format-icons": {
             "headphone": "Vol HP",
             "speaker": "Vol",
@@ -172,10 +176,13 @@
         "format": "Mic: {format_source}",
         "format-source": "{volume}",
         "format-source-muted":  "(muted) {volume}",
-        "on-click": "amixer set Capture toggle",
+        //"on-click": "amixer set Capture toggle",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         //"on-click-right": "$TERMINAL -e \"alsamixer -V all\"",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+        //"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+        //"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
     },
 }

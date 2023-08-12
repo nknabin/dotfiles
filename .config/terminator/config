@@ -15,10 +15,13 @@
   preferences_keybindings = <Primary><Shift><Alt>k
 [profiles]
   [[default]]
-    background_color = "#282828"
-    font = Iosevka Nerd Font 14
-    foreground_color = "#ebdbb2"
-    scrollbar_position = hidden
+    background_color = "#181818"
+    background_image = None
+    font = Iosevka Nerd Font 16
+    foreground_color = "#e4e4ef"
+    scrollback_infinite = True
+    #palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
+    palette = "#2E3436:#a40000:#4E9A06:#C4A000:#3465A4:#75507B:#ce5c00:#babdb9:#555753:#EF2929:#8AE234:#FCE94F:#729FCF:#AD7FA8:#fcaf3e:#EEEEEC"
     use_system_font = False
 [layouts]
   [[default]]

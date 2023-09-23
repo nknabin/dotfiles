@@ -280,3 +280,10 @@ Use tab group: WorkMode for everything else"
 
 (global-set-key (kbd "M-p") 'move-text-up)
 (global-set-key (kbd "M-n") 'move-text-down)
+
+;;; evil-mc
+(global-set-key (kbd "C->")         'evil-mc-make-and-goto-next-match)
+(global-set-key (kbd "C-<")         'evil-mc-make-and-goto-next-match)
+(global-set-key (kbd "C-c C-<")     'evil-mc-make-all-cursors)
+(global-set-key (kbd "C-\"")        'evil-mc-skip-and-goto-next-match)
+(global-set-key (kbd "C-:")         'evil-mc-skip-and-goto-next-match)

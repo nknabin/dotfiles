@@ -1,0 +1,35 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+# ignore everything
+*
+!.gitignore
+!LICENSE
+!README.md
+
+# dot files
+!.bashrc
+!.bash_profile
+!.profile
+!.spacemacs
+!.tmux.conf
+!.vimrc
+!.xsessionrc
+!.xinitrc
+!.Xresoures
+
+# .config
+!.config
+.config/*
+!.config/nvim
+!.config/i3
+!.config/waybar
+!.config/rofi
+!.config/qt5ct
+!.config/shell
+!.config/sway
+!.config/swaylock
+!.config/wofi
+!.config/xfce4

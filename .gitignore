@@ -9,6 +9,10 @@ tmp/
 !LICENSE
 !README.md
 
+# scripts
+!scripts
+!scripts/*
+
 # dot files
 !.bashrc
 !.bash_profile

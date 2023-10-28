@@ -30,10 +30,18 @@ alias \
 alias \
     xclip="xclip -selection clipboard"
 
+if [ -f $HOME/.config/emacs/bin/doom ]; then
+    alias doom="$HOME/.config/emacs/bin/doom"
+fi
+
 # shorthand
 alias \
     g="git" \
-    p="sudo pacman" \
+    p="sudo apt" \
     v="$EDITOR" \
-    powerup="sudo pacman -Syuu --noconfirm && yay -Syuu --noconfirm"
+    powerup="sudo apt update && sudo apt full-upgrade -y"
 
+# arch linux
+#alias \
+#    p="sudo pacman" \
+#    powerup="sudo pacman -Syuu --noconfirm && yay -Syuu --noconfirm"

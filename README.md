@@ -2,7 +2,8 @@
 Dot files and config for Arch Linux
 
 ## OS
-Arch Linux
+1. Arch Linux
+2. Debian 12
 
 ## Window manager
 Switch between the following window managers in .config/shell/profile.
@@ -16,13 +17,16 @@ Switch between the following window managers in .config/shell/profile.
   - Bar: i3status
 
 ## Settings for:
-- Vim/Nvim
-- rofi
-- wofi
 - bash (aliases in .config/shell/aliasrc)
-- terminator
+- Doom Emacs
+- rofi
 - spacemacs
+- sway
+- terminator
 - tmux
+- waybar
+- wofi
+- Vim/Nvim
 
 ## Custom scripts
 - Powermenu (~/.local/bin/powermenu)\
@@ -35,6 +39,11 @@ bindsym $mod+Shift+d exec powermenu
 ```
 
 ## Usage
+### Arch Linux
 1. Clone the repo.
-1. Install scripts/arch-postinstall.sh by running bash arch-postinstall.sh. You will need sudo privileges.
-1. Copy the config files to your home directory. This will replace your existing settings.
+2. Install scripts/arch-postinstall.sh by running bash arch-postinstall.sh. You will need sudo privileges.
+
+### Debian 12
+1. Clone the repo.
+2. Run scripts/setup.sh. You will need sudo privileges.
+

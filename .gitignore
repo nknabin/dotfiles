@@ -27,7 +27,11 @@ tmp/
 # .config
 !.config
 .config/*
+
 !.config/nvim
+!.config/nvim/**
+!.config/nvim/lazy-lock.json
+
 !.config/i3
 !.config/waybar
 !.config/rofi

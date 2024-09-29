@@ -1,69 +1,82 @@
--- Set mapleader to comma
-vim.g.mapleader = ","
-
-vim.opt.compatible = false
 vim.opt.guifont = { "Iosevka Nerd Font Mono:h14" }
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
+local opt = vim.opt
 
-vim.wo.relativenumber = true
-vim.wo.number = true
+vim.opt.compatible = false
 
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.incsearch = true
-vim.o.hlsearch = false
+opt.relativenumber = false
+opt.number = true
 
-vim.o.autochdir = true
-vim.o.cinoptions = 'l1'
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.autoindent = true
+
+opt.wrap = false
+
+opt.ignorecase = true
+opt.smartcase = true
+opt.incsearch = true
+opt.hlsearch = false
+
+opt.cursorline = true
+
+opt.termguicolors = true
+--[[ opt.background = "dark" ]]
+opt.signcolumn = "yes"
+
+opt.backspace = "indent,eol,start"
+
+opt.clipboard:append("unnamedplus") -- use system clipboard to copy
+
+opt.splitright = true
+opt.splitbelow = true
 
 -- Disable auto comment
 vim.cmd([[
-  augroup FormatOptions
+    augroup FormatOptions
     autocmd!
     autocmd FileType * lua vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
-  augroup END
-]])
+    augroup END
+    ]])
+
+-- Set mapleader to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+local keymap = vim.keymap
 
 -- Copy to clipboard
-vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>Y', '"+yg_', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>yy', '"+yy', { noremap = true })
+keymap.set('v', '<leader>y', '"+y', { noremap = true })
+keymap.set('n', '<leader>Y', '"+yg_', { noremap = true })
+keymap.set('n', '<leader>y', '"+y', { noremap = true })
+keymap.set('n', '<leader>yy', '"+yy', { noremap = true })
 
 -- Paste from clipboard
-vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>P', '"+P', { noremap = true })
+keymap.set('n', '<leader>p', '"+p', { noremap = true })
+keymap.set('n', '<leader>P', '"+P', { noremap = true })
+keymap.set('v', '<leader>p', '"+p', { noremap = true })
+keymap.set('v', '<leader>P', '"+P', { noremap = true })
 
-require('plugins')
+-- neovim
+keymap.set('n', '<leader>hr', ':source $MYVIMRC<CR>', { noremap = true, silent = true, desc= 'Reload config' })
+keymap.set('n', '<leader>qq', ':qa<CR>', { noremap = true, silent = true })
 
--- setup orgmode
--- init.lua
+-- buffers
+keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true })
 
--- Load custom treesitter grammar for org filetype
-require('orgmode').setup_ts_grammar()
+keymap.set('n', '<S-h>', ':bprevious<CR>', { noremap = true, silent = true })
+keymap.set('n', '<S-l>', ':bnext<CR>', { noremap = true, silent = true })
+keymap.set('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
 
--- Treesitter configuration
-require('nvim-treesitter.configs').setup {
-  -- If TS highlights are not enabled at all, or disabled via `disable` prop,
-  -- highlighting will fallback to default Vim syntax highlighting
-  highlight = {
-    enable = true,
-    -- Required for spellcheck, some LaTex highlights and
-    -- code block highlights that do not have ts grammar
-    additional_vim_regex_highlighting = {'org'},
-  },
-  ensure_installed = {'org'}, -- Or run :TSUpdate org
-}
 
-require('orgmode').setup({
-    org_agenda_files = {'~/code/orgs/**/*'},
-    org_default_notes_file = '~/code/orgs/todo.org',
-})
+-- lazy
+require("config.lazy")
+keymap.set('n', '<leader>l', ':Lazy<CR>', { noremap = true, silent = true })
+
+-- colorscheme
+vim.cmd[[colorscheme gruvbox]]
+

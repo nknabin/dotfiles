@@ -17,6 +17,7 @@ tmp/
 !.bashrc
 !.bash_profile
 !.profile
+!.dir_colors
 !.spacemacs
 !.tmux.conf
 !.vimrc
